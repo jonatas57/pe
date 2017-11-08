@@ -75,14 +75,20 @@ no buscaR(no inicio, int item) {
 }
 
 // 8 (EXERCÍCIO) Devolve o último nó de uma lista.
-no final(no inicio);
+no final(no inicio){
+  if(inicio==NULL){
+    return NULL;
+  }
+  for(;inicio->prox!=NULL;inicio=inicio->prox);
+  return inicio;
+}
 
-// 9. (EXERCÍCIO) Insere nó no final. 
+// 9. (EXERCÍCIO) Insere nó no final.
 //    (Supõem que x e inicio são ambos diferentes de NULL.)
 //    (Mas *inicio pode ser NULL.)
 void insere_final(no *inicio, no x);
 
-// 10. (EXERCÍCIO) Insere nó no final, recursivamente. 
+// 10. (EXERCÍCIO) Insere nó no final, recursivamente.
 //    (Supõem que x e inicio são ambos diferentes de NULL.)
 //    (Mas *inicio pode ser NULL.)
 void insere_finalR(no *inicio, no x);
@@ -93,7 +99,7 @@ void insere_finalR(no *inicio, no x);
 void remove_um(no *inicio, int item) {
   if (*inicio == NULL)
     return;
-  
+
   no x, *prev = inicio;
   for (x = (*inicio)->prox; x != NULL && x->item != item;
        prev = &(x->prox), x = x->prox);
@@ -103,15 +109,15 @@ void remove_um(no *inicio, int item) {
     deleta(x);
   }
 }
-  
+
 // 11. Remove primeiro nó que contém item.
 //     (Provavelmente a 1ª idéia que vem à mente.)
 void remove_um_v1(no *inicio, int item) {
   if (*inicio == NULL)
     return;
-  
+
   no x = *inicio, y;
-  
+
   if (x->item == item) {
     *inicio = x->prox;
     deleta(x);
@@ -120,7 +126,7 @@ void remove_um_v1(no *inicio, int item) {
 
   while (x->prox != NULL && x->prox->item != item)
     x = x->prox;
-  
+
   if (x->prox == NULL)
     return;
 
@@ -183,7 +189,7 @@ int testa_inverteR() {
     if (i == 0)
       tail = head;
   }
-      
+
   imprime(head);
   inverteR(&head, &tail);
   imprime(head);
@@ -194,5 +200,10 @@ int testa_inverteR() {
 
 // Troque o corpo da função main para testar outras funções...
 int main() {
-  return testa_inverteR();
+  no lista1=NULL;
+  for(int i=0;i<10;i++){
+    insere_inicio(&lista1, novo(i));
+  }
+  imprime (lista1);
+  return 0;
 }
