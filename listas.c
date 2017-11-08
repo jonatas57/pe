@@ -86,12 +86,25 @@ no final(no inicio){
 // 9. (EXERCÍCIO) Insere nó no final.
 //    (Supõem que x e inicio são ambos diferentes de NULL.)
 //    (Mas *inicio pode ser NULL.)
-void insere_final(no *inicio, no x);
+void insere_final(no *inicio, no x){
+  if(*inicio==NULL){
+    *inicio=x;
+  }else{
+    no f=final(*inicio);
+    f->prox=x;
+  }
+}
 
 // 10. (EXERCÍCIO) Insere nó no final, recursivamente.
 //    (Supõem que x e inicio são ambos diferentes de NULL.)
 //    (Mas *inicio pode ser NULL.)
-void insere_finalR(no *inicio, no x);
+void insere_finalR(no *inicio, no x){
+  if(*inicio==NULL){
+    *inicio=x;
+  }else{
+    insere_finalR(&((*inicio)->prox), x);
+  }
+}
 
 // 11. Remove primeiro nó que contém item.
 //    (Supõem que inicio é diferente de NULL.
@@ -136,15 +149,26 @@ void remove_um_v1(no *inicio, int item) {
 }
 
 // 12. (EXERCÍCIO) Remove todos os nós contendo item.
-void remove_todos(no *inicio, int item);
+void remove_todos(no *inicio, int item){
+
+}
 
 // 13. (EXERCÍCIO) Remove todos os nós contendo item, recursivo.
 //     Este fica mais simples que o anterior.
-void remove_todosR(no *inicio, int item);
+void remove_todosR(no *inicio, int item){
+
+}
 
 // 14. (EXERCÍCIO) Cria uma cópia da lista dada
 //     (copiar em outras posições de memória, é claro).
-no copia(no inicio);
+no copia(no inicio){
+  no inicio2=NULL;
+  for(;inicio!=NULL;inicio=inicio->prox){
+    no x = novo(inicio->item);
+    insere_final(&inicio2, x);
+  }
+  return inicio2;
+}
 
 // 15. Inverte a lista.
 void inverte(no *inicio) {
@@ -200,10 +224,14 @@ int testa_inverteR() {
 
 // Troque o corpo da função main para testar outras funções...
 int main() {
-  no lista1=NULL;
+  no lista1 =NULL, lista2=NULL;
   for(int i=0;i<10;i++){
     insere_inicio(&lista1, novo(i));
+    insere_inicio(&lista2, novo(9-i));
   }
-  imprime ("%d\n", final(lista1));
+  imprime(lista1);imprime(lista2);
+  lista2=copia(lista1);
+  printf("copia: ");
+  imprime(lista2);
   return 0;
 }
