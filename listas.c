@@ -204,6 +204,6 @@ int main() {
   for(int i=0;i<10;i++){
     insere_inicio(&lista1, novo(i));
   }
-  imprime (lista1);
+  imprime ("%d\n", final(lista1));
   return 0;
 }
