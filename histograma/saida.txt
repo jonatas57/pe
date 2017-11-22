@@ -1,0 +1,65 @@
+med = 19.737, min = 5.700, max = 29.160
+Média das temperaturas acima da média: 22.440
+aux[0] = 2
+aux[1] = 8
+aux[2] = 25
+aux[3] = 61
+aux[4] = 150
+aux[5] = 309
+aux[6] = 564
+aux[7] = 843
+aux[8] = 1348
+aux[9] = 1779
+aux[10] = 2127
+aux[11] = 2314
+aux[12] = 2443
+aux[13] = 2440
+aux[14] = 2178
+aux[15] = 1728
+aux[16] = 956
+aux[17] = 363
+aux[18] = 124
+aux[19] = 31
+Temperaturas entre 05.700 e 06.873: *
+Temperaturas entre 06.873 e 08.046: *
+Temperaturas entre 08.046 e 09.219: *
+Temperaturas entre 09.219 e 10.392: *
+Temperaturas entre 10.392 e 11.565: **
+Temperaturas entre 11.565 e 12.738: ***
+Temperaturas entre 12.738 e 13.911: *****
+Temperaturas entre 13.911 e 15.084: *******
+Temperaturas entre 15.084 e 16.257: ************
+Temperaturas entre 16.257 e 17.430: ***************
+Temperaturas entre 17.430 e 18.603: ******************
+Temperaturas entre 18.603 e 19.776: *******************
+Temperaturas entre 19.776 e 20.949: *********************
+Temperaturas entre 20.949 e 22.122: ********************
+Temperaturas entre 22.122 e 23.295: ******************
+Temperaturas entre 23.295 e 24.468: ***************
+Temperaturas entre 24.468 e 25.641: ********
+Temperaturas entre 25.641 e 26.814: ***
+Temperaturas entre 26.814 e 27.987: **
+Temperaturas entre 27.987 e 29.160: *
+Histograma na vertical:
+
+            *       
+            **      
+           ***      
+          *****     
+          *****     
+          *****     
+         *******    
+         *******    
+         *******    
+        ********    
+        ********    
+        ********    
+        ********    
+        *********   
+       **********   
+       **********   
+      ***********   
+      ***********   
+     *************  
+    *************** 
+********************
