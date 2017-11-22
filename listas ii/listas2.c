@@ -12,9 +12,14 @@ no livre=NULL;
 int N=0, L=0;
 
 void insere_inicio(no *inicio, no x) {
-  x->prox = *inicio;
-  x->ant=NULL;
-  *inicio = x;
+  if(*inicio==NULL){
+    *inicio=x;
+  }
+  else{
+    x->prox=*inicio;
+    (*inicio)->ant=x;
+    *inicio=x;
+  }
 }
 no final(no inicio){
   if(inicio==NULL){
@@ -40,7 +45,8 @@ no novo(int item){
     }
     N+=50;
     return novo(item);
-  }else{
+  }
+  else{
     no x=livre;
     livre=x->prox;
     x->prox=NULL;
@@ -64,30 +70,69 @@ void deletalis(no *ini){
 void imprime(no inicio) {
   no x;
   for (no x = inicio; x != NULL; x = x->prox)
-    printf("%d ", x->item);
+    printf("%d", x->item);
   printf("\n");
 }
 
 no soma(no a, no b){
   no s=NULL, fa=final(a), fb=final(b);
-  int pa=1, pb=1;
+  int pa=1, pb=1, d=0;
   while(pa+pb){
-    int d=0;
     if(pa){
       d+=fa->item;
+      if(fa->ant==NULL){
+        pa=0;
+      }
+      else{
+        fa=fa->ant;
+      }
     }
     if(pb){
       d+=fb->item;
+      if(fb->ant==NULL){
+        pb=0;
+      }
+      else{
+        fb=fb->ant;
+      }
     }
-    insere_inicio(&s, novo(d));
+    insere_inicio(&s, novo(d%10));
+    d/=10;
   }
+  if(d>0){
+    insere_inicio(&s, novo(1));
+  }
+  return s;
+}
+no prod(no a, no b){
+  no s=NULL, aux=NULL;
+  int m=0, r=0;
+  insere_inicio(&s, novo(0));
+  for(no i=final(a);i!=NULL;i=i->ant){
+    for(int k=0;k<m;k++){
+      insere_inicio(&aux, novo(0));
+    }
+    for(no j=final(b);j!=NULL;j=j->ant){
+      int d=i->item*j->item;
+      insere_inicio(&aux, novo((d+r)%10));
+      r=(d+r)/10;
+    }
+    if(r>0){
+      insere_inicio(&aux, novo(r));
+    }
+    no x=soma(s, aux);
+    s=x;
+    deletalis(&aux);
+    m++;
+  }
+  return s;
 }
 
 int main(){
   int p = 1;
   char c, o;
   no a=NULL, b=NULL, s=NULL;
-  while(scanf("%c", &c)!=0){
+  while(scanf("%c", &c)!=EOF){
     if((int)c <= 57 && (int)c >= 48){
       int d=(int)c-48;
       if(p){
@@ -102,6 +147,13 @@ int main(){
         s=soma(a, b);
         imprime(s);
       }
+      else if(o=='*'){
+        s=prod(a, b);
+        imprime(s);
+      }
+      deletalis(&a);
+      deletalis(&b);
+      deletalis(&s);
     }
     else{
       p=0;
