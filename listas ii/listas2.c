@@ -38,8 +38,9 @@ void insere_final(no *inicio, no x){
   }
 }
 no novo(int item){
+  printf("-->%d %d\n", N, L);
   if(L==N){
-    no v=(no)malloc(50*sizeof(struct s_no));
+    no v=(no)calloc(50, sizeof(struct s_no));
     for(int i=0;i<50;i++){
       insere_inicio(&livre, v+i);
     }
@@ -121,6 +122,7 @@ no prod(no a, no b){
       insere_inicio(&aux, novo(r));
     }
     no x=soma(s, aux);
+    deleta(s);
     s=x;
     deletalis(&aux);
     m++;
@@ -145,12 +147,18 @@ int main(){
       p=1;
       if(o=='+'){
         s=soma(a, b);
-        imprime(s);
       }
       else if(o=='*'){
         s=prod(a, b);
-        imprime(s);
       }
+      imprime(s);
+      /*if(L>0){
+        printf("++");
+        for(int i=0;i<N;i++){
+          printf("%d", V[i]->item);
+        }
+        printf("\n");
+      }*/
       deletalis(&a);
       deletalis(&b);
       deletalis(&s);
