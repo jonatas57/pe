@@ -38,7 +38,6 @@ void insere_final(no *inicio, no x){
   }
 }
 no novo(int item){
-  printf("-->%d %d\n", N, L);
   if(L==N){
     no v=(no)calloc(50, sizeof(struct s_no));
     for(int i=0;i<50;i++){
