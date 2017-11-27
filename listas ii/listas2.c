@@ -11,6 +11,12 @@ struct s_no{
 no livre=NULL;
 int N=0, L=0;
 
+void imprime(no inicio) {
+  no x;
+  for (no x = inicio; x != NULL; x = x->prox)
+    printf("%d", x->item);
+  printf("\n");
+}
 void insere_inicio(no *inicio, no x) {
   if(*inicio==NULL){
     *inicio=x;
@@ -53,11 +59,13 @@ no novo(int item){
     x->item=item;
     x->ant=NULL;
     L++;
+    imprime(livre);
     return x;
   }
 }
 void deleta(no x){
   insere_inicio(&livre, x);
+  imprime(livre);
   L--;
 }
 void deletalis(no *ini){
@@ -66,12 +74,6 @@ void deletalis(no *ini){
     *ini=x->prox;
     deleta(x);
   }
-}
-void imprime(no inicio) {
-  no x;
-  for (no x = inicio; x != NULL; x = x->prox)
-    printf("%d", x->item);
-  printf("\n");
 }
 
 no soma(no a, no b){
@@ -121,7 +123,7 @@ no prod(no a, no b){
       insere_inicio(&aux, novo(r));
     }
     no x=soma(s, aux);
-    deleta(s);
+    deletalis(&s);
     s=x;
     deletalis(&aux);
     m++;
@@ -162,6 +164,7 @@ int main(){
       deletalis(&a);
       deletalis(&b);
       deletalis(&s);
+      printf("usados: %d; total: %d\n", L, N);
     }
     else{
       p=0;
