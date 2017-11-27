@@ -150,14 +150,15 @@ int main(){
       else if(o=='*'){
         s=prod(a, b);
       }
-      imprime(s);
-      /*if(L>0){
-        printf("++");
-        for(int i=0;i<N;i++){
-          printf("%d", V[i]->item);
+      while(s!=NULL&&s->prox!=NULL&&s->item==0){
+        if(s->item==0){
+          s->prox->ant=NULL;
+          no x=s;
+          s=s->prox;
+          deleta(x);
         }
-        printf("\n");
-      }*/
+      }
+      imprime(s);
       deletalis(&a);
       deletalis(&b);
       deletalis(&s);
