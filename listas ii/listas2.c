@@ -119,6 +119,7 @@ no prod(no a, no b){
     }
     if(r>0){
       insere_inicio(&aux, novo(r));
+      r=0;
     }
     no x=soma(s, aux);
     deletalis(&s);
