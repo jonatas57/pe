@@ -9,7 +9,7 @@ struct s_no{
 };
 
 no livre=NULL;
-int N=0, L=0;
+//int N=0, L=0;
 
 void imprime(no inicio) {
   no x;
@@ -44,12 +44,12 @@ void insere_final(no *inicio, no x){
   }
 }
 no novo(int item){
-  if(L==N){
-    no v=(no)calloc(50, sizeof(struct s_no));
-    for(int i=0;i<50;i++){
+  if(livre==NULL){
+    no v=(no)calloc(1024, sizeof(struct s_no));
+    for(int i=0;i<1024;i++){
       insere_inicio(&livre, v+i);
     }
-    N+=50;
+    //N+=1024;
     return novo(item);
   }
   else{
@@ -58,15 +58,13 @@ no novo(int item){
     x->prox=NULL;
     x->item=item;
     x->ant=NULL;
-    L++;
-    imprime(livre);
+    //L++;
     return x;
   }
 }
 void deleta(no x){
   insere_inicio(&livre, x);
-  imprime(livre);
-  L--;
+  //L--;
 }
 void deletalis(no *ini){
   while(*ini!=NULL){
@@ -164,7 +162,7 @@ int main(){
       deletalis(&a);
       deletalis(&b);
       deletalis(&s);
-      printf("usados: %d; total: %d\n", L, N);
+      //printf("usados: %d; total: %d\n", L, N);
     }
     else{
       p=0;
